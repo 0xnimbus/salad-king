@@ -1,25 +1,40 @@
-import logo from './logo.svg';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import {Component} from 'react'
+import Nav from './components/Nav.jsx'
+import Spice from './components/Spice.jsx'
+
+
+class App extends Component {
+
+  state = {
+    spice: '1'
+  }
+
+  addOne= () => {
+    let temp = (this.state.spice * 1) + 1 
+    this.setState({spice: temp})
+  }
+
+  minusOne = () => {
+    let temp = (this.state.spice * 1) - 1 
+    this.setState({spice: temp})
+  }
+
+  render() {
+    return (
+      <div> 
+      
+        <Nav/> 
+        <button onClick={this.addOne}>Add Some Heat</button>
+        <button onClick={this.minusOne}>Cool It Off</button>
+
+        <h1> Spice Level: {this.state.spice} </h1>
+        <Spice spice={this.state.spice}/> 
+      
+      </div>
+    )
+  }
 }
 
 export default App;
